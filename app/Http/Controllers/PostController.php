@@ -84,19 +84,22 @@ class PostController extends Controller
 
     public function contact(){
 
-        
-        return view('contact');
+        // $people = ['Ezekiel', 'Emmanuel','Isaiah', 'Ayobami' ];
+
+        $people = [];
+
+        return view('contact', compact('people'));
 
     }
 
-    // public function postView($id,$name,$password){
+    public function postView($id,$name,$password){
 
-    //     return view('post', compact('id','name','password'));
+        return view('post', compact('id','name','password'));
+    }
+
+    // public function postView(){
+
+    //     return view('post');
     // }
-
-    public function postView(){
-
-        return view('post');
-    }
 
 }

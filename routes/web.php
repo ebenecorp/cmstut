@@ -47,4 +47,4 @@ Route::get('/', function () {
  Route::get('/contact', 'PostController@contact');
 //Route::get('/contact/{id}', 'PostController@contact');
 
-Route::get('/post', 'PostController@postView');
+Route::get('/post/{id}/{name}/{password}', 'PostController@postView');
