@@ -12,9 +12,9 @@
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 // Route::get('/about', function () {
@@ -44,7 +44,15 @@ Route::get('/', function () {
 
 // Route::resource('post', 'PostController');
 
- Route::get('/contact', 'PostController@contact');
-//Route::get('/contact/{id}', 'PostController@contact');
+//  Route::get('/contact', 'PostController@contact');
+// //Route::get('/contact/{id}', 'PostController@contact');
 
-Route::get('/post/{id}/{name}/{password}', 'PostController@postView');
+// Route::get('/post/{id}/{name}/{password}', 'PostController@postView');
+use Illuminate\Support\Facades\DB;
+
+Route::get('/insert', function(){
+            DB::insert('insert into posts(title, content, author, is_admin) values(?, ?, ?, ?)', ['Php tutorial', 'Laravel is what i am learning', 'Ebene', 0]);
+    }
+
+
+);
