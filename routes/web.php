@@ -88,7 +88,7 @@ Route::get('/insert', function(){
 
 Route::get('/delete', function(){
 
-    $results = DB::delete('delete posts where id = ?', [1]);
+    $results = DB::delete('delete from posts where id = ?', [1]);
 
     return $results;
 
