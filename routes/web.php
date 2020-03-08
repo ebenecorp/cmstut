@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -228,8 +230,19 @@ use App\Post;
 
 // });
 
-Route::get('/forcedelete', function(){
+// Route::get('/forcedelete', function(){
 
-    Post::onlyTrashed()->where('is_admin', 1)->forcedelete();
+//     Post::onlyTrashed()->where('is_admin', 1)->forcedelete();
+
+// });
+
+// |--------------------------------------------------------------------------
+// | Eloquents Relationship
+//  One to one relationship
+// |--------------------------------------------------------------------------
+// |
+Route::get('/user/{id}/post', function($id){
+
+    return User::find($id)->post;
 
 });
