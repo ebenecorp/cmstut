@@ -1,6 +1,8 @@
 <?php
 
 use App\User;
+use App\Role;
+use App\Country;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,12 +66,12 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/insert', function(){
-            DB::insert('insert into posts(title, content, author, is_admin) values(?, ?, ?, ?)', ['Php tutorial', 'Laravel is what i am learning', 'Ebene', 0]);
-    }
+// Route::get('/insert', function(){
+//             DB::insert('insert into posts(title, content, author, is_admin) values(?, ?, ?, ?)', ['Php tutorial', 'Laravel is what i am learning', 'Ebene', 0]);
+//     }
 
 
-);
+// );
 // Route::get('/read', function(){
 
 //    $results= DB::select('select * from posts where id = ?', [1]);
@@ -241,8 +243,110 @@ use App\Post;
 //  One to one relationship
 // |--------------------------------------------------------------------------
 // |
-Route::get('/user/{id}/post', function($id){
+// Route::get('/user/{id}/post', function($id){
 
-    return User::find($id)->post;
+//     return User::find($id)->post;
 
-});
+// });
+
+
+// |--------------------------------------------------------------------------
+// | Eloquents 
+//  One to One relationship reversed
+// |--------------------------------------------------------------------------
+// |
+
+// Route::get('/post/{id}/user', function($id){
+
+//     Return Post::find($id)->user->email;
+
+// });
+
+
+
+// |--------------------------------------------------------------------------
+// | Eloquents 
+//  One to Many relationship reversed
+// |--------------------------------------------------------------------------
+// |
+ 
+// Route::get('/posts', function(){
+//     $user = User::find(1);
+
+//     foreach($user->posts as $post){
+//             echo $post->content .'<br>';
+//     }
+
+// });
+
+// |--------------------------------------------------------------------------
+// | Eloquents 
+//  Many to Many relationship reversed
+// |--------------------------------------------------------------------------
+// |
+
+    // Route::get('/posts/{id}', function($id){
+    //     $user = User::find($id)->roles;
+
+    //     return $user;
+       
+       
+    //     // foreach($user->roles as $role){
+    //     //     echo $role->name;
+    //     // }
+
+
+    // });
+
+    
+// |--------------------------------------------------------------------------
+// | Eloquents 
+//  Many to Many relationship reversed
+// |--------------------------------------------------------------------------
+// |
+
+
+    // Route::get('/user/{id}', function($id){
+
+    //         $role = Role::find($id)->users;
+
+    //         return $role;
+
+    // });
+
+    
+// |--------------------------------------------------------------------------
+// | Eloquents 
+//  Querying intermmediate/pivot tables
+// |--------------------------------------------------------------------------
+// |
+
+    // Route::get('/user/pivot', function(){
+
+    //     $user = User::find(1);
+
+    //     foreach($user->roles as $role){
+
+    //         return $role->pivot->created_at;
+    //     }
+
+    // });
+
+    
+// |--------------------------------------------------------------------------
+// | Eloquents 
+//  Using BelongsToMany Through
+// |--------------------------------------------------------------------------
+// |
+
+    Route::get('/user/country', function(){
+        // $country = Country::find(1);
+
+        $country = Country::find(4);
+
+        foreach($country->posts as $post){
+            return $post->title;
+        }
+
+
+   });
