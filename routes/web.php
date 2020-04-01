@@ -2,7 +2,9 @@
 
 use App\User;
 use App\Role;
+use App\Photo;
 use App\Country;
+use App\Tag;
 
 /*
 |--------------------------------------------------------------------------
@@ -339,14 +341,82 @@ use App\Post;
 // |--------------------------------------------------------------------------
 // |
 
-    Route::get('/user/country', function(){
-        // $country = Country::find(1);
+//     Route::get('/user/country', function(){
+//         // $country = Country::find(1);
 
-        $country = Country::find(4);
+//         $country = Country::find(4);
 
-        foreach($country->posts as $post){
-            return $post->title;
-        }
+//         foreach($country->posts as $post){
+//             return $post->title;
+//         }
 
 
-   });
+//    });
+
+       
+// |--------------------------------------------------------------------------
+// | Eloquents 
+//  Using BelongsToMany Through
+// |--------------------------------------------------------------------------
+// |
+
+//    Route::get('/user/photos', function (){
+//         $user = User::find(1);
+
+//         foreach($user->photos as $photo){
+//             return $photo;
+//         }
+
+//    });
+
+   
+//    Route::get('/post/{id}/photos', function ($id){
+//     $post = Post::find($id);
+
+//     foreach($post->photos as $photo){
+//         echo $photo->path.'<br>';
+//     }
+
+// });
+
+    Route::get('/photo/{id}', function($id){
+
+        $photo = Photo::findOrFail($id);
+
+            return $photo->imageable;
+    });
+
+    // |--------------------------------------------------------------------------
+// | Eloquents 
+//  Polymorphic relations
+// |--------------------------------------------------------------------------
+// |
+        Route::get('/post/tag', function(){
+
+            $post = Post::find(1);
+
+            foreach ($post->tags as $tag){
+                    return $tag->name;
+            }
+
+        });
+
+        Route::get('/tag/post', function (){
+            $tag = Tag::find(2);
+
+            foreach($tag->posts as $post){
+
+                echo $post->author;
+            }
+
+        });
+
+        Route::get('/tag/video', function (){
+            $tag = Tag::find(1);
+
+            foreach($tag->videos as $video){
+
+                return $video->name;
+            }
+
+        });
