@@ -1,10 +1,10 @@
 <?php
 
-use App\User;
-use App\Role;
-use App\Photo;
-use App\Country;
-use App\Tag;
+// use App\User;
+// use App\Role;
+// use App\Photo;
+// use App\Country;
+// use App\Tag;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +18,9 @@ use App\Tag;
 */
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 // Route::get('/about', function () {
@@ -32,9 +32,9 @@ use App\Tag;
 //     return  "HI, YOU ARE VIEWING CONTACT US";
 // });
 
-// Route::get('/post/{id}', function($id){
+// Route::get('/posts/{id}', function($id){
 
-//     return " This is post number ".$id;
+//     return " This is posts number ".$id;
 // });
 
 // Route::get('admin/posts/example', array('as'=>'admin.home ',function(){
@@ -44,16 +44,16 @@ use App\Tag;
 
 // }));
 
-// Route::get('/post', 'PostController@index');
+// Route::get('/posts', 'PostController@index');
 
-// Route::get('/post/{id}', 'PostController@index');
+// Route::get('/posts/{id}', 'PostController@index');
 
-// Route::resource('post', 'PostController');
+// Route::resource('posts', 'PostController');
 
 //  Route::get('/contact', 'PostController@contact');
 // //Route::get('/contact/{id}', 'PostController@contact');
 
-// Route::get('/post/{id}/{name}/{password}', 'PostController@postView');
+// Route::get('/posts/{id}/{name}/{password}', 'PostController@postView');
 use Illuminate\Support\Facades\DB;
 
 
@@ -99,9 +99,9 @@ use Illuminate\Support\Facades\DB;
 //     return $results;
 
 // });
-  
+
 // |--------------------------------------------------------------------------
-// | Eloquents 
+// | Eloquents
 // |--------------------------------------------------------------------------
 // |
 // | Here is where you can register web routes for your application. These
@@ -116,21 +116,21 @@ use App\Post;
 
 //     $posts = Post::all();
 
-//     foreach($posts as $post){
-//         return $post->title;
+//     foreach($posts as $posts){
+//         return $posts->title;
 //     }
-    
+
 // });
 
 
 // Route::get('/find{id}', function ($id) {
 
 
-//     $post = Post::find($id);
+//     $posts = Post::find($id);
 
-//     return $post->content;
-    
-    
+//     return $posts->content;
+
+
 // });
 
 // Route::get('/findwhere', function(){
@@ -145,41 +145,41 @@ use App\Post;
 
 // Route::get('/findmore', function(){
 
-//     $post = Post::where('is_admin', '<', 2)->firstOrFail();
+//     $posts = Post::where('is_admin', '<', 2)->firstOrFail();
 
-//     return $post;
+//     return $posts;
 
 
 // });
 
 // Route::get('/basicinsert', function(){
 
-//     $post = new Post;
+//     $posts = new Post;
 
-//     $post->title= ' Eloquent insert';
-//     $post->content = 'this is an insert statement using eloquent.';
-//     $post->author = 'mr bean';
-//     $post->is_admin= 2;
-//     $post->save();
+//     $posts->title= ' Eloquent insert';
+//     $posts->content = 'this is an insert statement using eloquent.';
+//     $posts->author = 'mr bean';
+//     $posts->is_admin= 2;
+//     $posts->save();
 
 
 // });
 
 // Route::get('/basicupdate', function(){
 
-//     $post = Post::find(2);
+//     $posts = Post::find(2);
 
-//     $post->title = 'THis is a post title';
-//     $post->author = 'Mr. Fire Odinkemere';
+//     $posts->title = 'THis is a posts title';
+//     $posts->author = 'Mr. Fire Odinkemere';
 
 
-//     $post->save();
+//     $posts->save();
 
 // });
 
 // Route::get('/create', function(){
 
-//         $post = Post::create(['title'=>'a created post', 'content'=>'A created post content', 'author'=>'Mr MX dean',
+//         $posts = Post::create(['title'=>'a created posts', 'content'=>'A created posts content', 'author'=>'Mr MX dean',
 //                             'is_admin'=>0]);
 
 
@@ -194,9 +194,9 @@ use App\Post;
 
 // Route::get('/delete', function(){
 
-//     // $post = Post::find(5);
+//     // $posts = Post::find(5);
 
-//     // $post->delete();
+//     // $posts->delete();
 
 //     Post::destroy(6);
 
@@ -213,15 +213,15 @@ use App\Post;
 
 // Route::get('/readsoftdelete', function(){
 
-//     // $post = Post::find(1);
+//     // $posts = Post::find(1);
 
-//     // return $post;
+//     // return $posts;
 
-//     // $post = Post::withTrashed()->where('id', 1)->get();
-//     // return $post;
+//     // $posts = Post::withTrashed()->where('id', 1)->get();
+//     // return $posts;
 
-//     $post = Post::onlyTrashed()->where('is_admin', 1)->get();
-//     return $post;
+//     $posts = Post::onlyTrashed()->where('is_admin', 1)->get();
+//     return $posts;
 
 
 
@@ -245,20 +245,20 @@ use App\Post;
 //  One to one relationship
 // |--------------------------------------------------------------------------
 // |
-// Route::get('/user/{id}/post', function($id){
+// Route::get('/user/{id}/posts', function($id){
 
-//     return User::find($id)->post;
+//     return User::find($id)->posts;
 
 // });
 
 
 // |--------------------------------------------------------------------------
-// | Eloquents 
+// | Eloquents
 //  One to One relationship reversed
 // |--------------------------------------------------------------------------
 // |
 
-// Route::get('/post/{id}/user', function($id){
+// Route::get('/posts/{id}/user', function($id){
 
 //     Return Post::find($id)->user->email;
 
@@ -267,22 +267,22 @@ use App\Post;
 
 
 // |--------------------------------------------------------------------------
-// | Eloquents 
+// | Eloquents
 //  One to Many relationship reversed
 // |--------------------------------------------------------------------------
 // |
- 
+
 // Route::get('/posts', function(){
 //     $user = User::find(1);
 
-//     foreach($user->posts as $post){
-//             echo $post->content .'<br>';
+//     foreach($user->posts as $posts){
+//             echo $posts->content .'<br>';
 //     }
 
 // });
 
 // |--------------------------------------------------------------------------
-// | Eloquents 
+// | Eloquents
 //  Many to Many relationship reversed
 // |--------------------------------------------------------------------------
 // |
@@ -291,8 +291,8 @@ use App\Post;
     //     $user = User::find($id)->roles;
 
     //     return $user;
-       
-       
+
+
     //     // foreach($user->roles as $role){
     //     //     echo $role->name;
     //     // }
@@ -300,9 +300,9 @@ use App\Post;
 
     // });
 
-    
+
 // |--------------------------------------------------------------------------
-// | Eloquents 
+// | Eloquents
 //  Many to Many relationship reversed
 // |--------------------------------------------------------------------------
 // |
@@ -316,9 +316,9 @@ use App\Post;
 
     // });
 
-    
+
 // |--------------------------------------------------------------------------
-// | Eloquents 
+// | Eloquents
 //  Querying intermmediate/pivot tables
 // |--------------------------------------------------------------------------
 // |
@@ -334,9 +334,9 @@ use App\Post;
 
     // });
 
-    
+
 // |--------------------------------------------------------------------------
-// | Eloquents 
+// | Eloquents
 //  Using BelongsToMany Through
 // |--------------------------------------------------------------------------
 // |
@@ -346,16 +346,16 @@ use App\Post;
 
 //         $country = Country::find(4);
 
-//         foreach($country->posts as $post){
-//             return $post->title;
+//         foreach($country->posts as $posts){
+//             return $posts->title;
 //         }
 
 
 //    });
 
-       
+
 // |--------------------------------------------------------------------------
-// | Eloquents 
+// | Eloquents
 //  Using BelongsToMany Through
 // |--------------------------------------------------------------------------
 // |
@@ -369,54 +369,63 @@ use App\Post;
 
 //    });
 
-   
-//    Route::get('/post/{id}/photos', function ($id){
-//     $post = Post::find($id);
 
-//     foreach($post->photos as $photo){
+//    Route::get('/posts/{id}/photos', function ($id){
+//     $posts = Post::find($id);
+
+//     foreach($posts->photos as $photo){
 //         echo $photo->path.'<br>';
 //     }
 
 // });
 
-    Route::get('/photo/{id}', function($id){
+//     Route::get('/photo/{id}', function($id){
 
-        $photo = Photo::findOrFail($id);
+//         $photo = Photo::findOrFail($id);
 
-            return $photo->imageable;
-    });
+//             return $photo->imageable;
+//     });
 
-    // |--------------------------------------------------------------------------
-// | Eloquents 
-//  Polymorphic relations
-// |--------------------------------------------------------------------------
-// |
-        Route::get('/post/tag', function(){
+//     // |--------------------------------------------------------------------------
+// // | Eloquents
+// //  Polymorphic relations
+// // |--------------------------------------------------------------------------
+// // |
+//         Route::get('/posts/tag', function(){
 
-            $post = Post::find(1);
+//             $posts = Post::find(1);
 
-            foreach ($post->tags as $tag){
-                    return $tag->name;
-            }
+//             foreach ($posts->tags as $tag){
+//                     return $tag->name;
+//             }
 
-        });
+//         });
 
-        Route::get('/tag/post', function (){
-            $tag = Tag::find(2);
+        // Route::get('/tag/posts', function (){
+        //     $tag = Tag::find(2);
 
-            foreach($tag->posts as $post){
+        //     foreach($tag->posts as $posts){
 
-                echo $post->author;
-            }
+        //         echo $posts->author;
+        //     }
 
-        });
+        // });
 
-        Route::get('/tag/video', function (){
-            $tag = Tag::find(1);
+        // Route::get('/tag/video', function (){
+        //     $tag = Tag::find(1);
 
-            foreach($tag->videos as $video){
+        //     foreach($tag->videos as $video){
 
-                return $video->name;
-            }
+        //         return $video->name;
+        //     }
 
-        });
+        // });
+
+
+        //     // |--------------------------------------------------------------------------
+    // // CRUD APPLICATION
+// //
+// // |--------------------------------------------------------------------------
+// // |
+
+ Route::resource('/posts', 'PostController');

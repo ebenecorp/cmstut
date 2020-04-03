@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreatePostRequest;
 use Illuminate\Http\Request;
+use App\Post;
 
 class PostController extends Controller
 {
@@ -11,9 +13,13 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        return 'its working'. $id;
+
+        $posts = Post::all();
+
+
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -23,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -32,9 +38,19 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    public function store(CreatePostRequest $request)
     {
-        //
+            //the below method return data entered in the form to the screen
+        // return $request->title;
+//        //
+//        $this->validate($request, [
+//            'title'=>'required',
+//        ]);
+
+        Post::create($request->all());
+
+       return redirect('/posts');
     }
 
     /**
@@ -45,7 +61,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return " its working hhhh";
+        $post = Post::FindOrFail($id);
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -56,7 +73,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -68,7 +87,11 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        /// return 'its working';
+        $post= Post::whereId($id)->update(['title'=> $request->title]);
+        return redirect('posts');
+//        $post->update($request);
+
     }
 
     /**
@@ -79,6 +102,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+        $post = Post::whereId($id)->delete();
+
+        return redirect('/posts');
         //
     }
 
@@ -94,12 +120,12 @@ class PostController extends Controller
 
     public function postView($id,$name,$password){
 
-        return view('post', compact('id','name','password'));
+        return view('posts', compact('id','name','password'));
     }
 
     // public function postView(){
 
-    //     return view('post');
+    //     return view('posts');
     // }
 
 }
